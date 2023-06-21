@@ -16,7 +16,10 @@ public class GithubProvider {
                 = MediaType.get("application/json; charset=utf-8");
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS) // 设置连接超时时间为30秒
+                .readTimeout(30, TimeUnit.SECONDS) // 设置超时时间为30秒
                 .build();
+
+
         RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(accessTokenDTO));
         Request request = new Request.Builder()
                 .url("https://github.com/login/oauth/access_token")
@@ -35,11 +38,12 @@ public class GithubProvider {
     public GithubUser getUser(String accessToken){
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS) // 设置连接超时时间为30秒
+                .readTimeout(30, TimeUnit.SECONDS) // 设置超时时间为30秒
                 .build();
         Request request = new Request.Builder()
-                    .url("https://api.github.com/user?access_token="+accessToken)
-                    .build();
-
+                .url("https://api.github.com/user")
+                .header("Authorization","token "+accessToken)
+                .build();
         try {
             Response response = client.newCall(request).execute();
             String string = response.body().string();
