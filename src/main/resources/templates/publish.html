@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>BBS论坛</title>
+    <title>发布 - BBS论坛</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bbs.css" >
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-7ymO4nGrkm372HoSbq1OY2DP4pEZnMiA+E0F3zPr+JQQtQ82gQ1HPY3QIVtztVua" crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="background: white">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">BBS论坛</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +40,39 @@
                 <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=Iv1.66f42a2978d49d8c&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
             </li>
         </ul>
-
     </div>
 </nav>
+<div class="container-fluid" style="margin: 30px">
+    <div class="row">
+        <div class="col-lg-9 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true">发起</span></h2>
+            <hr style="color: black">
+            <form action="">
+                <div class="form-group">
+                    <label for="title">问题标题：</label>
+                    <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="问题标题..">
+                </div>
+                <div class="form-group">
+                    <label for="description">问题补充：</label>
+                    <textarea name="description" id="description" class="form-control" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tag">添加标签：</label>
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="添加标签;以,隔开">
+                </div>
+                <button type="button" class="btn btn-success">Success</button>
+            </form>
+        </div>
+        <div class="col-lg-3 col-sm-12 col-xs-12">
+            <h3>发起问题指南</h3>
+            <p>- 在提出问题之前，尝试预测一些可能的解决方法。</p>
+            <p>- 这样可以帮助回答者更好地理解你的需求，并提供更相关和实用的答案。</p>
+            <p>- 如果你认为还有其他相关信息对问题的解答有帮助，请在问题陈述中提供。</p>
+            <p>- 在提问时保持礼貌和尊重。</p>
+            <p>   - 感谢回答者的时间和帮助。</p>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
