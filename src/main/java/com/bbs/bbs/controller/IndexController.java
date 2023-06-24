@@ -1,7 +1,10 @@
 package com.bbs.bbs.controller;
 
+import com.bbs.bbs.mapper.UserLoginMapper;
 import com.bbs.bbs.mapper.UserMapper;
 import com.bbs.bbs.model.User;
+import com.bbs.bbs.model.UserLogin;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +19,18 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private UserLoginMapper userLoginMapper;
     @GetMapping("/")
     public String index(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
-        User user = new User();
+        UserLogin userLogin = new UserLogin();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("token")){
                 String token = cookie.getValue();
-                user = userMapper.findByToken(token);
-                if (user.getName()!=null){
-                    request.getSession().setAttribute("user",user);
+                userLogin = userLoginMapper.SelectByToken(token);
+                if (userLogin!=null){
+                    request.getSession().setAttribute("user",userLogin);
                 }
                 break;
             }

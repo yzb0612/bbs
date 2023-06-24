@@ -3,10 +3,18 @@ package com.bbs.bbs.model;
 public class User {
     private Integer id;
     private String name;
-    private String accountId;
+    private String password;
     private String token;
     private Long gmtCreate;
     private Long gmtModified;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public Integer getId() {
         return id;
@@ -24,20 +32,12 @@ public class User {
         this.name = name;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getGmtCreate() {
@@ -50,6 +50,18 @@ public class User {
 
     public Long getGmtModified() {
         return gmtModified;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtModified=" + gmtModified +
+                '}';
     }
 
     public void setGmtModified(Long gmtModified) {
